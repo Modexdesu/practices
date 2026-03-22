@@ -237,18 +237,43 @@
             return result;
         }
 
-        public static string Format(string template, object[] values)
+        public static string MyFormat(string template, params object[] args)
         {
-            for (int i = 0; i < values.Length; i++)
+            string result = template;
+            for (int i = 0; i < args.Length; i++)
             {
-                string stringValue = values[i].ToString();
-
-                template = template.Replace("{" + i + "}", stringValue);
+                string placeholder = "{" + i + "}";
+                result = Replace(result, placeholder, args[i].ToString());
             }
-            return template;
-
+            return result;
         }
 
-        public static 
+        public static string Replace(string s, string oldValue, string newValue)
+        {
+            if (s == null) return null;
+            if (oldValue == null) throw new ArgumentNullException(nameof(oldValue));
+            if (oldValue.Length == 0) throw new ArgumentException("oldValue cannot be empty.", nameof(oldValue));
+            if (newValue == null) newValue = "";
+
+            string result = "";
+            int i = 0;
+            while (i < s.Length)
+            {
+                if (i + oldValue.Length <= s.Length && Substring(s, i, oldValue.Length) == oldValue)
+                {
+                    result += newValue;
+                    i += oldValue.Length;
+                }
+                else
+                {
+                    result += s[i];
+                    i++;
+                }
+            }
+            return result;
+        }
+
+
+
     }
 }
