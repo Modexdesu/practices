@@ -1,0 +1,35 @@
+﻿ClientClass.cs- es klientis klasi, shedis account klasic shignit da payment klasic, romelic misi child ebi arian
+client class-
+
+fields: string saxeli, gvari;
+guid id;
+int piradi nomeri;
+
+functions:
+addclient()
+showclientinfo()
+changeclientinfo()
+
+
+account class-
+fields: int accountNumber;
+string accountType;
+decimal balance;
+datetime creationdate;
+
+functions:
+generateAccountNumber()
+createAccount()
+showBalance()
+changeAccountinfo()
+transfer()
+
+payment class-
+decimal amount;
+string currency;
+datetime paymentDate;
+string description;
+
+functions:
+createDescrpition()
+getPaymenthistory()
