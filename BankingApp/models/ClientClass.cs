@@ -1,41 +1,29 @@
 ﻿namespace models
 {
-    internal class Client
+    public class Client
     {
-        private string Name { get; set; }
-        private string LastName { get; set; }
+        public Guid ID { get; }
+        public string Name { get; set; }
+        public string LastName { get; set; }
+        public int PhoneNumber { get; set; }
+        public string PersonalNumber { get; set; }
+        public DateTime CreationDate { get; }
 
-        private int phoneNumber { get; set; }
-        private string PersonalNumber { get; set; }
+        public List<Account> Accounts { get; private set; } = new();
 
-        private Guid    ID { get; set; }
-
-        private DateTime CreationDate { get; set; }
-
-        private List<account> accounts { get; set; } = new List<account>();
-
-        private class account
+        public Client(string name, string lastName, int phoneNumber, string personalNumber)
         {
-            private int AccountNumber { get; set; }
-            private string AccountType { get; set; }
-            private string AccountName { get; set; }
-            private decimal Balance { get; set; }
-            private DateTime CreationDate { get; set; }
-
-          //  public int Transfer();
-
-
-            private class payments
-            {
-                private decimal Amount { get; set; }
-                private string Currency { get; set; }
-                private DateTime PaymentDate { get; set; }
-                private string Description { get; set; }
-            }
+            ID = Guid.NewGuid();
+            Name = name;
+            LastName = lastName;
+            PhoneNumber = phoneNumber;
+            PersonalNumber = personalNumber;
+            CreationDate = DateTime.UtcNow;
         }
 
-
-
-
+        public void AddAccount(Account account)
+        {
+            Accounts.Add(account);
+        }
     }
 }

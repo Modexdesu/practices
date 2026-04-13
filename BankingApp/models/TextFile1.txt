@@ -33,3 +33,7 @@ string description;
 functions:
 createDescrpition()
 getPaymenthistory()
+
+
+
+diax yvela komentari me mivaware da didi dro mivande magram ravi erti kvirit gvian gadmovagzavne da barem martivi wasakitxi gavuketo tqo
