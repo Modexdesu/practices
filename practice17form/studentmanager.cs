@@ -33,7 +33,7 @@ namespace practice17form
             }
         }
 
-        public void DeleteStudent(string name)
+        public void DeleteStudent(string name,int age)
         {
             using (SqlConnection con = new SqlConnection(connectionString))
             {
@@ -44,6 +44,7 @@ namespace practice17form
                     using (SqlCommand cmd = new SqlCommand(sqlQuery, con))
                     {
                         cmd.Parameters.AddWithValue("@name", name);
+                        cmd.Parameters.AddWithValue("@age", age);
                         cmd.ExecuteNonQuery();
                     }
                 }

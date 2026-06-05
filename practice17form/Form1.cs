@@ -37,7 +37,7 @@ namespace practice17form
         private void button1_Click(object sender, EventArgs e) //delete
         {
             StudentManager studentManager = new StudentManager();
-            studentManager.DeleteStudent(textBox1.Text);
+            studentManager.DeleteStudent(textBox1.Text, int.Parse(textBox2.Text));
             Console.WriteLine("student deleted");
         }
 
@@ -46,8 +46,19 @@ namespace practice17form
             StudentManager studentManager = new StudentManager();
             studentManager.AddStudent(textBox1.Text, int.Parse(textBox2.Text));
         }
-       
+
+        private void button2_Click_1(object sender, EventArgs e) //update
+        {
+            this.Close();
+            string inputtedname = textBox1.Text;
+            int inputtedage = int.Parse(textBox2.Text);
+            updateform updateForm = new updateform();
+            updateForm.inputtedname = inputtedname;
+            updateForm.inputtedage = inputtedage;
+            updateForm.Show();
+
         }
+    }
     }
 
 
