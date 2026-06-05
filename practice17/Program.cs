@@ -11,14 +11,14 @@ void AddStudent(string name, int age)
 {
     using (SqlConnection con = new SqlConnection(connectionString))
     {
-       
+
         try
         {
             con.Open();
             Console.WriteLine("Connection opened successfully.");
             using (SqlCommand cmd = new SqlCommand(sqlQuery, con))
             {
-                cmd.Parameters.AddWithValue("@name",name);
+                cmd.Parameters.AddWithValue("@name", name);
                 cmd.Parameters.AddWithValue("@age", age);
                 cmd.ExecuteNonQuery();
                 Console.WriteLine("Student added successfully.");
@@ -43,7 +43,7 @@ void DeleteStudent(string name)
             string sqlQuery = "DELETE FROM Students WHERE Name = @name";
             using (SqlCommand cmd = new SqlCommand(sqlQuery, con))
             {
-                cmd.Parameters.AddWithValue("@name",name);
+                cmd.Parameters.AddWithValue("@name", name);
                 cmd.ExecuteNonQuery();
                 Console.WriteLine("Student deleted successfully.");
             }
@@ -81,5 +81,34 @@ void GetStudentlist()
         }
     }
 }
+
+void UpdateStudent(string name, int age)
+{
+    using (SqlConnection con = new SqlConnection(connectionString))
+
+
+        try
+        {
+            con.Open();
+            Console.WriteLine("Connection opened successfully.");
+            string sqlQuery = "UPDATE Students SET Age = @age WHERE Name = @name";
+            using (SqlCommand cmd = new SqlCommand(sqlQuery, con))
+            {
+                cmd.Parameters.AddWithValue("@name", name);
+                cmd.Parameters.AddWithValue("@age", age);
+                cmd.ExecuteNonQuery();
+                Console.WriteLine("Student updated successfully.");
+            }
+        }
+        catch (SqlException ex)
+        {
+            Console.WriteLine("Error: {0}", ex.Message);
+
+
+
+        }
+
+}
+
 
 
